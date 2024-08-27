@@ -41,7 +41,7 @@ fn select_user_by_id(
     user_id: u32,
 ) -> mysql::error::Result<Vec<models::User>> {
     conn.exec_map(
-      r"SELECT id, name, phone FROM users WHERE id = :user_id", 
+      r"SELECT id, name, phone FROM user WHERE id = :user_id", 
       params! {user_id}, 
       |(id, name, phone)| {
       models::User { id, name, phone }

@@ -6,10 +6,10 @@ mod routes;
 
 #[actix_web::main]
 async fn main() -> Result<(), std::io::Error> {
-    let db_user = String::from("db_user");
-    let db_password = String::from("db_password");
+    let db_user = String::from("root");
+    let db_password = String::from("qqq12138");
     let db_host = String::from("localhost");
-    let db_port = 5432;
+    let db_port = 3306;
     let db_name = String::from("cosi");
 
     let builder = mysql::OptsBuilder::new()
@@ -32,6 +32,7 @@ async fn main() -> Result<(), std::io::Error> {
         App::new()
             .app_data(shared_data.clone())
             .service(routes::index)
+            .service(routes::user_detail)
     })
     .bind(("127.0.0.1", 8080))?
     .run()

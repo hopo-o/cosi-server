@@ -7,7 +7,7 @@ pub(crate) async fn index() -> impl Responder {
     HttpResponse::Ok().body("I love cosi!")
 }
 
-#[get("/users/{id}")]
+#[get("/user/{id}")]
 pub(crate) async fn user_detail(
     path: web::Path<u32>,
     data: web::Data<mysql::Pool>,
